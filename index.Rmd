@@ -1,5 +1,5 @@
 --- 
-title: "Test multivariados de independencia basados en rangos de los vecinos  más cercanos"
+title: "Test multivariados de independencia basados en grafos"
 author: "Hernán David Torres, Olga Lisethe Castellanos </br> Universidad Nacional de Colombia"
 date: "`r format(Sys.time(), '%A, %d de %B de %Y')`"
 site: bookdown::bookdown_site
@@ -15,10 +15,10 @@ bibliography: [book.bib, packages.bib, referencias.bib]
 biblio-style: apalike
 csl: apa.csl
 link-citations: yes
-github-repo: hedtorresca/Tests_de_Independencia
+github-repo: hedtorresca/Test_Grafos
 description: "El formato de salida es bookdown::gitbook."
 ---
 
 # INTRODUCCIÓN
 
-> Se exponen, a continuación, algunos test multivariados de independencia entre dos vectores aleatorios de dimensión arbitraria usados, convenientemente, en situaciones de *_HDLSSD_*. [@sarkar2017some]
+> Se exponen, a continuación, algunos test multivariados de independencia, basados en grafos, entre dos vectores aleatorios de dimensión arbitraria usados, convenientemente, en situaciones de *_HDLSSD_*. [@sarkar2017some]

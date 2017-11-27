@@ -24,13 +24,53 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Tests multivariados de independencia basados en rangos de los vecinos más cercanos},
+            pdftitle={Test multivariados de independencia basados en grafos},
             pdfauthor={Hernán David Torres, Olga Lisethe Castellanos  Universidad Nacional de Colombia},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -76,8 +116,7 @@
 }
 
 \setlength{\droptitle}{-2em}
-  \title{Tests multivariados de independencia basados en rangos de los vecinos
-más cercanos}
+  \title{Test multivariados de independencia basados en grafos}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
   \author{Hernán David Torres, Olga Lisethe Castellanos Universidad Nacional de
@@ -86,7 +125,7 @@ Colombia}
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{martes, 21 de noviembre de 2017}
+  \date{lunes, 27 de noviembre de 2017}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -111,9 +150,9 @@ Colombia}
 \chapter{INTRODUCCIÓN}\label{introduccion}
 
 \begin{quote}
-Se exponen, a continuación, algunos tests multivariados de independencia
-entre dos vectores aleatorios de dimensión arbitraria usados,
-convenientemente, en situaciones de \emph{\emph{HDLSSD}}.
+Se exponen, a continuación, algunos test multivariados de independencia,
+basados en grafos, entre dos vectores aleatorios de dimensión arbitraria
+usados, convenientemente, en situaciones de \emph{\emph{HDLSSD}}.
 \citep{sarkar2017some}
 \end{quote}
 
@@ -127,7 +166,7 @@ pequeños.
 
 \chapter{EL PROBLEMA}\label{el-problema}
 
-Se han desarrollado muchos tests estadísticos ---tanto paramétricos como
+Se han desarrollado muchos test estadísticos ---tanto paramétricos como
 no paramétricos --- para probar la independencia entre 2 vectores
 aleatorios, pero dichos test no son aplicables en casos de alta
 dimensionalidad y de muestras pequeñas.
@@ -157,10 +196,10 @@ Y\\
 \(\subseteq\) \(\mathbb{R}^p\) y \(Y\) \(\in\) \(\mathcal{Y}\)
 \(\subseteq\) \(\mathbb{R}^q\)
 
-\section{Tests existentes}\label{tests-existentes}
+\section{Test existentes}\label{test-existentes}
 
 \begin{longtable}[]{@{}ccl@{}}
-\caption{Parangón de los tests propuestos hasta el
+\caption{Parangón de los test propuestos hasta el
 momento.}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.25\columnwidth}\centering\strut
@@ -223,32 +262,79 @@ rangos\strut
 \bottomrule
 \end{longtable}
 
-\section{Tests aplicables a HDLSS}\label{tests-aplicables-a-hdlss}
+\section{Test aplicables a HDLSS}\label{test-aplicables-a-hdlss}
 
 Para manipular datos HDLSS en distintas áreas de investigación, se han
-desarrollado algunos tests de independencia entre dos vectores, basados
-en distancias \emph{inter-point}; sea \(d_{x}\) y \(d_{y}\) medidas de
-distancia en \(\mathcal{X}\) y \(\mathcal{Y}\), respectivamente; y, para
-toda \((i,j)\), definimos
+desarrollado algunos test de independencia entre dos vectores, basados
+en grafos y enfocados en distancias \emph{inter-point}; sea \(d_{x}\) y
+\(d_{y}\) medidas de distancia en \(\mathcal{X}\) y \(\mathcal{Y}\),
+respectivamente; y, para toda \((i,j)\), definimos
 \[ d_{ij}^x = d_x(x_i, x_j), \\ d_{ij}^y = d_y(y_i, y_j). \]
 
-En la mayoría de los tests presentados, a continuación, se utiliza
+En la mayoría de los test presentados, a continuación, se utiliza
 distancias euclidianas en \(\mathcal{X}\) y \(\mathcal{Y}\) como
 \(d_{x}\) y \(d_{y}\) , respectivamente.
 
-\chapter{TESTS BASADO EN GRAFOS}\label{tests-basado-en-grafos}
+\chapter{Teoría de grafos}\label{teoria-de-grafos}
+
+\section{Generalidades}\label{generalidades}
+
+\begin{itemize}
+\tightlist
+\item
+  Rama de las matemáticas y las ciencias de la computación que estudia
+  las propiedades de los grafos
+\item
+  Un grafo \(\displaystyle G=(V,E)\) es una pareja ordenada en la que
+  \(\mathbf{V}\) es un conjunto no vacío de \textbf{vértices} y
+  \(\mathbf{E}\) es un conjunto de \textbf{aristas}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\mathbf{V}\) consta de pares no ordenados de vértices, tales como
+    \$\{x,y\} \in E \$, entonces decimos que \(x\) e \(y\) son
+    adyacentes.
+  \end{itemize}
+\end{itemize}
+
+\section{Un poco de historia}\label{un-poco-de-historia}
 
 \begin{itemize}
 \item
-  \textbf{\emph{Grafo simple:}} Conjunto de \emph{nodos} unidos por
-  enlaces llamados \emph{aristas}.
+  Siglo XVIII: Problema de los puentes de \emph{Königsberg}: Encontrar
+  un camino que recorriera los siete puentes del río Pregel,de modo que
+  se recorrieran todos los puentes pasando una sola vez por cada uno de
+  ellos.
+\item
+  1736: El trabajo de Leonhard Euler sobre el problema titulado ``La
+  solución de un problema relativo a la geometría de la posición'' es
+  considerado el primer resultado de la teoría de
+  grafos.\citep{euler1741solutio}
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics[width=360,height=500]{7_bridges} 
+
+}
+
+\caption{Los siete puentes del río Pregel}\label{fig:unnamed-chunk-1}
+\end{figure}
+
+\section{Composición y conceptos}\label{composicion-y-conceptos}
+
+\begin{itemize}
+\item
+  \textbf{\emph{Grafo simple o grafo:}} Conjunto de \emph{nodos} unidos
+  por enlaces llamados \emph{aristas}.
 \item
   \textbf{\emph{Grafo completo}}: Grafo simple donde \emph{cada par de
   vértices} está conectado por una \emph{arista}. Tiene \(n(n-1)/2\)
   aristas. Grafo regular de grado \(n-1\)
 \item
-  \textbf{\emph{Grafo de arcos ponderados}}: Grafo con asignaciones de
-  pesos en cada arco.
+  \textbf{\emph{Camino:}} Secuencia de vértices dentro de un grafo tal
+  que exista una arista entre cada vértice y el siguiente.
 \end{itemize}
 
 \begin{figure}
@@ -257,20 +343,18 @@ distancias euclidianas en \(\mathcal{X}\) y \(\mathcal{Y}\) como
 
 }
 
-\caption{Grafo completo ponderado}\label{fig:unnamed-chunk-1}
+\caption{Grafo completo ponderado}\label{fig:unnamed-chunk-2}
 \end{figure}
 
-\section{Conceptos en teoría de
-grafos}\label{conceptos-en-teoria-de-grafos}
+\section{Tipos de grafos}\label{tipos-de-grafos}
 
 \begin{itemize}
-\tightlist
 \item
   \textbf{\emph{Subgrafo:}} Cuyo conjunto de vértices(como el de
   aristas) es un subconjunto del de grafo original.
 \item
-  \textbf{\emph{Camino:}} Secuencia de vértices dentro de un grafo tal
-  que exista una arista entre cada vértice y el siguiente.
+  \textbf{\emph{Grafo de arcos ponderados o etiquetado}}: Grafo con
+  asignaciones de pesos en cada arco.
 \item
   \textbf{\emph{Árbol:}} Donde cualesquiera dos vértices están
   conectados por exactamente \emph{un camino}.
@@ -282,8 +366,24 @@ grafos}\label{conceptos-en-teoria-de-grafos}
 
 }
 
-\caption{Árbol}\label{fig:unnamed-chunk-2}
+\caption{Árbol}\label{fig:unnamed-chunk-3}
 \end{figure}
+
+\section{Ejemplo básico en R}\label{ejemplo-basico-en-r}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(igraph)}
+\NormalTok{g <-}\StringTok{ }\KeywordTok{graph.formula}\NormalTok{(}\DecValTok{1}\OperatorTok{-}\DecValTok{2}\NormalTok{, }\DecValTok{1}\OperatorTok{-}\DecValTok{3}\NormalTok{ ,}\DecValTok{1}\OperatorTok{-}\DecValTok{4}\NormalTok{, }\DecValTok{1}\OperatorTok{-}\DecValTok{5}\NormalTok{ , }\DecValTok{1}\OperatorTok{-}\DecValTok{6}\NormalTok{ ,}\DecValTok{1}\OperatorTok{-}\DecValTok{7}\NormalTok{, }\DecValTok{2}\OperatorTok{-}\DecValTok{6}\NormalTok{, }\DecValTok{2}\OperatorTok{-}\DecValTok{7}\NormalTok{, }\DecValTok{3}\OperatorTok{-}\DecValTok{5}\NormalTok{, }\DecValTok{4}\OperatorTok{-}\DecValTok{5}\NormalTok{ ,}\DecValTok{4}\OperatorTok{-}\DecValTok{6}\NormalTok{, }\DecValTok{4}\OperatorTok{-}\DecValTok{7}\NormalTok{, }\DecValTok{5}\OperatorTok{-}\DecValTok{6}\NormalTok{, }\DecValTok{5}\OperatorTok{-}\DecValTok{7}\NormalTok{, }\DecValTok{6}\OperatorTok{-}\DecValTok{7}\NormalTok{)}
+\CommentTok{# V(g) Muestra las etiquetas vértices del grafo}
+\CommentTok{# E(g) Muestra los arcos del grafo}
+\KeywordTok{plot}\NormalTok{(g)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tests_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\chapter{TEST BASADO EN GRAFOS}\label{test-basado-en-grafos}
 
 \section{Precisiones del test}\label{precisiones-del-test}
 
@@ -308,10 +408,10 @@ El gráfico K-NN en \(\mathcal{G}_{\mathbf{x}}\) tiene un arco entre
 
 }
 
-\caption{1-NN 50 obs. Normal bivariada}\label{fig:unnamed-chunk-3}
+\caption{1-NN 50 obs. Normal bivariada}\label{fig:unnamed-chunk-5}
 \end{figure}
 
-\section{Grafo 5-NN}\label{grafo-5-nn}
+\section{Ejemplo: Grafo 5-NN}\label{ejemplo-grafo-5-nn}
 
 \begin{figure}
 
@@ -319,7 +419,7 @@ El gráfico K-NN en \(\mathcal{G}_{\mathbf{x}}\) tiene un arco entre
 
 }
 
-\caption{5-NN en 50 obs. Normal bivariada}\label{fig:unnamed-chunk-4}
+\caption{5-NN en 50 obs. Normal bivariada}\label{fig:unnamed-chunk-6}
 \end{figure}
 
 \section{El árbol recubridor mínimo
@@ -334,10 +434,10 @@ del grafo inicial y, a la vez, será el de la menor suma de los pesos.
 
 }
 
-\caption{1-MST en 50 obs. Normal bivariada}\label{fig:unnamed-chunk-5}
+\caption{1-MST en 50 obs. Normal bivariada}\label{fig:unnamed-chunk-7}
 \end{figure}
 
-\section{Grafo 5-MST}\label{grafo-5-mst}
+\section{Ejemplo: Grafo 5-MST}\label{ejemplo-grafo-5-mst}
 
 El r-MST, \(r={1, 2,...,K}\), es un árbol recubridor mínimo que no
 comparte arco alguno con ninguno de los r-1 anteriores.
@@ -348,7 +448,7 @@ comparte arco alguno con ninguno de los r-1 anteriores.
 
 }
 
-\caption{5-MST en 50 obs. Normal bivariada}\label{fig:unnamed-chunk-6}
+\caption{5-MST en 50 obs. Normal bivariada}\label{fig:unnamed-chunk-8}
 \end{figure}
 
 \section{Test estadístico}\label{test-estadistico}
@@ -375,20 +475,22 @@ El estadístico correspondiente es:
 \section{Test estadístico libre de distribución basado en
 grafos}\label{test-estadistico-libre-de-distribucion-basado-en-grafos}
 
+\begin{quote}
 Pequeñas distancias en \(\mathcal{x}\) corresponden a pequeñas
 distancias en \(\mathcal{y}\)
+\end{quote}
 
 Seleccionamos un recorrido aleatorio del árbol, donde en cada paso
 comenzamos en un nodo ya visitado,\(i \in V= {1,2,...,n}\), y avanzamos
 hacia un nuevo nodo,\(j \in V^c\),. Por lo tanto, el árbol se recorre en
-\(n-1\) pasos. Se calcula el rango R\_i en cada \(d_{i,j}^{\mathbf{y}}\)
-y se obtienen \(n-2\) rangos.
+\(n-1\) pasos. Se calcula el rango \(R_i\) en cada
+\(d_{i,j}^{\mathbf{y}}\) y se obtienen \(n-2\) rangos.
 
 Y se usa el siguiente estadístico
 
 \[T_{RT} =  -2 \displaystyle \sum_{i=1}^{n-2} log(\dfrac{R_j}{n-i})\]
 
-\section{Ejemplo}\label{ejemplo}
+\section{Ejemplo de juguete}\label{ejemplo-de-juguete}
 
 \begin{figure}
 
@@ -396,7 +498,7 @@ Y se usa el siguiente estadístico
 
 }
 
-\caption{Ejemplo de juguete}\label{fig:unnamed-chunk-7}
+\caption{Ejemplo de juguete}\label{fig:unnamed-chunk-9}
 \end{figure}
 
 \section{Algoritmo de Prim}\label{algoritmo-de-prim}
@@ -408,12 +510,24 @@ vértices que no están aún en el árbol, encontrar el lado de menor
 distancia y unirlo al árbol. 3. Repetir el paso 2 (hasta que todos los
 vértices pertenezcan al árbol) \citep{heller2012consistent}
 
+\section{Ejemplo}\label{ejemplo}
+
+\begin{figure}
+
+{\centering \includegraphics[width=400,height=320]{Minimum_spanning_tree} 
+
+}
+
+\caption{Ejemplo de juguete}\label{fig:unnamed-chunk-10}
+\end{figure}
+
 \section{Test modificado libre de
 distribución}\label{test-modificado-libre-de-distribucion}
 
 A causa de la selección aleatoria del recorrido, el anterior test puede
 determinar inferencias engañosas. Para eso se usa un recorrido
-sistemático siguiendo el algoritmo de Prim. \citep{heller2012consistent}
+sistemático siguiendo el \emph{algoritmo de Prim}.
+\citep{heller2012consistent}
 
 Y se usa el estadístico T\_\{RT\} de la misma notación; en vez de
 \(R_i\), se usa \(R_o\) para distiguir la selección sitematizada de la
@@ -421,7 +535,7 @@ aleatoria.
 
 \[T^{o} = -2 \displaystyle \sum_{i=1}^{n-2} log \left( \dfrac{R_i^o}{n-i}\right)\]
 
-Sin embargo, los anteriores tests se desempeñan deficientemente en caso
+Sin embargo, los anteriores test se desempeñan deficientemente en caso
 de estar \(d_{i,j}^{\mathbf{y}}\) y \(d_{i,j}^{\mathbf{y}}\)
 negativamente relacionada. El problema es afrontado haciendo
 
@@ -431,216 +545,6 @@ Así
 
 \[ T^{r} = -2 \displaystyle \sum_{i=1}^{n-2} log \left( \dfrac{R_i ^r}{n-i}\right)\]
 
-\chapter{TEST BASADO EN CORRELACIÓN DE
-DISTANCIA}\label{test-basado-en-correlacion-de-distancia}
-
-Para todas las distribuciones con primeros momentos finitos, la
-correlación de distancias \(\mathcal{R}\) generaliza la idea de
-correlación de dos maneras fundamentales \citep{szekely2007measuring}:
-
-\begin{itemize}
-\tightlist
-\item
-  \(\mathcal{R} \mathbf{(X, Y)}\) se define para \(\mathbf{X}\) y
-  \(\mathbf{Y}\) en dimensiones arbitrarias;
-\item
-  \(\mathcal{R} \mathbf{(X, Y)}\) = 0 caracteriza la independencia de
-  \(\mathbf{X}\) y \(\mathbf{Y}\)
-\end{itemize}
-
-Para probar \(H_0: f_{x,y}= f_xf_y\) vs. \(H_A: f_{x,y}\neq f_xf_y\)
-
-\section{Precisiones del test}\label{precisiones-del-test-1}
-
-Para cada par \((i,j)\) con \((i \leq i \neq j \leq n)\) se define:
-
-\[A_{i,j} = d_{i,j}^x - d_{i,0}^x - d_{0,j}^x + d_{0,0}^x\]
-
-Con:
-
-\[d_{i,0}^x =  n^{-1} \sum_{j=1}^n d_{i,j}^x\]
-
-\[d_{0,j}^x = n^{-1} \sum_{i=1}^n d_{i,j}^x\]
-
-\[d_{0,0}^x = n^{-1} \sum_{i=1}^n d_{i,0}^x =  n^{-1} \displaystyle\sum_{j=1}^n d_{0,j}^x \]
-
-De la misma forma se definen los \(B_{i,j}\) basados en las distancias
-de \(Y\).
-
-\section{Estadístico}\label{estadistico}
-
-El estadístico se define como:
-
-\[T_{dCov}=\dfrac{ \displaystyle \left[ \sum_{i=1}^n \sum_{j=1}^n A_{i,j}B_{i,j} \right]}{ \displaystyle  \left[  \sum_{i=1}^n \sum_{j=1}^n  A_{i,j}^2  \sum_{i=1}^n \sum_{j=1}^n B_{i,j}^2 \right]^{1/2}}  \]
-
-Y es consistente para muestras grandes, pero no es eficaz cuando
-\(d_{i,j}^\mathbf{x}\) y \(d_{i,j}^\mathbf{y}\) son correlacionadas
-negativamente.
-
-\chapter{\texorpdfstring{TEST BASADO EN DISTANCIAS \(L_1\) Y KULLBACK-
-LEIBLER}{TEST BASADO EN DISTANCIAS L\_1 Y KULLBACK- LEIBLER}}\label{test-basado-en-distancias-l_1-y-kullback--leibler}
-
-Se consideran dos enfoques definidos cuando la distribución empírica de
-las variables es restringida a particiones finitas. Estos tests resultan
-ser fuertemente consistentes.
-
-\section{\texorpdfstring{Estadístico basado en
-\(L_1\)}{Estadístico basado en L\_1}}\label{estadistico-basado-en-l_1}
-
-Se denota \(v_n^{\mathbf{Z}}\) la distribución de \((x,y)\);
-\(\mu_n^{\mathbf{X}}\) y \(\mu_n^{\mathbf{Y}}\) distribuciones de \(x\)
-y \(y\).
-
-Sean \(P_n ={A_{n,1}, ... , A_{n,m_n}}\) y
-\(Q_n ={B_{n,1}, ... , B_{n,m'_n}}\) particiones disyuntas de \(X\) y
-\(Y\).
-
-Toda vez que \(A\) y \(B\) son subconjuntos de Borel, tenemos
-\[\nu_n(A \times B) = n^-1 \# \{i: (X_i, Y_i) \in A \times B, i = 1,...,n\}\]
-\[\mu_n^{\mathbf{X}}(A) = n^-1 \# \{i: X_i \in A , i = 1,...,n\}\]
-\[\mu_n^{\mathbf{Y}}(B) = n^-1 \# \{i: Y_i \in  B, i = 1,...,n\}\]
-
-Se define el estadístico \(L_1\) como
-
-\[\displaystyle \sum _{A\in P_n} \sum_{B \in Q_n} |\mu_n^{\mathbf{X}} (A \times B) - \mu_n^{\mathbf{X}}(A)\mu_n^{\mathbf{Y}}(B)|\]
-
-y el estadístico \textbf{Kullback- Leibler o log-verosimilitud}
-
-\[ \displaystyle \sum_{A\in P_n} \sum_{B\in Q_n} \mu_n^z(A \times B) log \left[ \dfrac{\mu_n^z(A \times B)}{{\mu_n^x(A) \mu_n^y(B)}}\right]\]
-
-Rechaza \(H_0 : v= \mu_n^x \times \mu_n^Y\) para valores grandes del
-estadístico.
-
-\chapter{TEST BASADO EN KERNEL
-REPRODUCTOR}\label{test-basado-en-kernel-reproductor}
-
-\textbf{Espacio de Hilbert con núcleo (Kernel) reproductor:} Es un
-espacio de Hilbert de funciones para las cuales todas las aplicaciones
-son operadores lineales.
-
-\section{Precisiones del test}\label{precisiones-del-test-2}
-
-Se propone un test basado en el hecho de que \(\mathbf{X}\) y
-\(\mathbf{Y}\) son independientes si y solo si \(f(\mathbf{X})\) y
-\(g(\mathbf{Y})\) son incorrelacionadas para todo \(f\)
-\in \mathcal{H_X} \$ y \(g\) \in \mathcal{H_Y}\$ donde \$
-\mathcal{H_X}\$ y \(\mathcal{H_Y}\) son espacios del núcleo reproductor
-
-El estadístico está definido como:
-
-\[T_{GG}= n^{-2} \left( \displaystyle \sum_{i=1}^n \sum_{j=1}^n  \alpha_{i,j} \beta_{i,j} \right) - 2n^{-3} \displaystyle \sum_{i=1}^n \left(  \sum_{j=1}^n \alpha_{i,j}  \right) \left(  \sum_{j=1}^n \beta_{i,j}  \right) +  n^{-4}\left(      
- \displaystyle   \sum_{i=1}^n \sum_{j=1}^n \alpha_{i,j} \right)  \left(     \sum_{i=1}^n  \sum_{j=1} ^n \beta_{i,j}  \right) \]
-
-Con
-
-\[\alpha_{i,j} = k^{ \mathcal{\mathbf{x}}} (\mathcal{\mathbf{x}}_i, \mathcal{\mathbf{x}}_j)\]
-
-\[\beta_{i,j} = k^{ \mathcal{\mathbf{y}}} (\mathcal{\mathbf{y}}_i, \mathcal{\mathbf{y}}_j)\]
-
-Para \(k^{ \mathcal{\mathbf{x}}}\) y \(k^{ \mathcal{\mathbf{y}}}\) las
-núcleos reproductores asociados a \(\mathcal{H_X}\) y \(\mathcal{H_Y}\)
-
-\chapter{TEST BASADO EN ASOCIACIÓN DE RANGOS
-DISTANCIAS}\label{test-basado-en-asociacion-de-rangos-distancias}
-
-Se propone un test basado en el estadístico \(\chi^2\) de Pearson
-calculado en una tabla de contingencia basada en distancia por pares,
-donde se asigna cada \(\mathbf{z_k}\) (\(k \neq i, j\)) a una celda
-según coresponda.
-
-\begin{figure}
-  
-  {\centering \includegraphics[width=450,height=220]{test5} 
-  
-  }
-  
-  \caption{Tabla de contingencia para la clasificación cruzada}\label{fig:unnamed-chunk-8}
-  \end{figure}
-
-Y así se define el test estadístico:
-
-\[ T_{HHG} = \displaystyle  \sum_{i=1}^n  \sum_{j (\neq i) =1}^n S_{ij} \]
-
-\chapter{TEST PROPUESTO POR EL AUTOR}\label{test-propuesto-por-el-autor}
-
-\begin{itemize}
-\item
-  Para cada \(z_i = \binom {x_i}{y_i}\) se organizan los otros \(z_js\)
-  \((j\neq i)\) según sus x- distancias de \(Z_i\). para
-  \(k= 1,2, ... , n-1\).
-\item
-  Sea \(z_{ik}\) el k-ésimo vecino más cercano de \(z_i\) \$ (d\_\{i,
-  i\_1\}\^{}x \leq d\_\{i, i\_2\}\^{}x \leq \ldots{} \leq d\_\{i,
-  i\_\{n-1\}\}\^{}x )\$ .
-\item
-  Sea \(R_{i,1}\) el rango de \(d_{i,i_1}^y\)\\
-  la y-distancia correspondiente a vecino mas cercano x de \(z_i\) en el
-  conjunto de
-  \[ (d_{i, i_1}^y  ,  d_{i, i_2}^y ,...  , d_{i, i_{n-1}}^y  )\]
-\item
-  Para \(k= 2, ..., n-2\), \(R_{i,k}\) es definido como el rango de
-  \(d_{i,i_k}^y\) , la y-distancia correspondiente al k-ésimo x-vecino
-  más cercano de \(Z_i\), en el conjunto
-  \({d_{i,i_k}^y, ... , d_{i, i_{n-1}}^y}\) que contiene \(n-k\) de las
-  y-distancias.
-\item
-  Se repite el procedimiento para todos los valores de
-  \(i = 1, 2,..., n\)
-\end{itemize}
-
-\section{Rangos retrospectivos}\label{rangos-retrospectivos}
-
-\begin{itemize}
-\item
-  Se define rangos retrospectivos como: \(R_{i,k}^r = n-k+1 - R_{i,k}\)
-  para \(i=1,2,...,n\) y \(k = 1,2, ... , n-2\).
-\item
-  Para alguna función monótona adeduada \(\varphi\) en \([0,1]\),
-\end{itemize}
-
-\$T\_1=-2\displaystyle \sum\emph{\{i=1 \^{}n\} \sum}\{k=1\}\^{}\{n-2\}
-\varphi \left( \dfrac{R_{i,k}}{n-k}\right), \$ y
-\(T_2= -2 \displaystyle \sum_{i=1}^n \sum_{k=1}^{n-2} \left( \dfrac{R_{i,k} ^r}{n-k} \right)\)
-
-Miden asociaciones positivas y negativas.
-
-\begin{itemize}
-\item
-  Se usa \(\varphi(t) = log(t)\)
-\item
-  Finalmente, \$T= max(T\_1 ,T\_2) \$ es el estadístico usado.
-\end{itemize}
-
-\(H_0\) se rechaza para valores grandes de T.
-
-\section{Permutaciones}\label{permutaciones}
-
-Para algún \(i\) fijo, los \(R_{i,j}\)'s son independientes bajo
-\(H_0\). \(R_{i,k}\) sigue una distribución uniforme
-
-Para \(i\neq j\) la distribución conjunta de \(R_{i,k}\) y \(R_{j,k}\)
-con \(k, k=1,2, ... , n-2\) puede depender de la distribución subyacente
-de \(Z\).
-
-Considerando una permutación aleatoria \(\phi\) de
-\(\{ 1, 2, ... , n \}\) y usando :
-
-\(Z_1 ^ * = \binom {x_1}{ y_{\phi (1)}}\)
-
-\(Z_2 ^* = \binom {x_2}{ y_{\phi (2)}}\)
-
-. . . \(Z_n ^* = \binom {x_n}{ y_{\phi (n)}}\)
-
-El estadístico es calculado usando estas mismas observaciones
-
-\section{Corregir asimetría del test}\label{corregir-asimetria-del-test}
-
-\(T_{x,y}\) : Rangos de y-distancias de los x-vecinos más cercanos
-
-\(T_{y,x}\) : Rangos de x-distancias de los y-vecinos más cercanos
-
-\[T_sum = T_{x,y} + T_{y,x}\] \[T_{max} = max (T_{x,y}, T_{y,x})\]
-
 \chapter{EJEMPLO CON DATOS REALES}\label{ejemplo-con-datos-reales}
 
 \begin{figure}
@@ -649,25 +553,26 @@ El estadístico es calculado usando estas mismas observaciones
   
   }
   
-  \caption{Tabla de contingencia para la clasificación cruzada}\label{fig:unnamed-chunk-9}
+  \caption{Tabla de contingencia para la clasificación cruzada}\label{fig:unnamed-chunk-11}
   \end{figure}
 
 \chapter{CONCLUSIONES}\label{conclusiones}
 
 \begin{itemize}
 \item
-  Si bien los test estadísticos presentados son convenientes en el caso
-  en el que el número de variables supera el de individuos, aún
-  presentan ciertas limitaciones; lo cual motivó al autor al desarrollo
-  y presentación de un nuevo método, el cual busca proveer una mejor
-  herramienta para probar independencia entre las variables.
+  Si bien los test estadísticos presentados al principio se usan para
+  probar la independencia, en el caso en el que el número de variables
+  supera el de individuos presentan limitaciones o no aplicabilidad; lo
+  cual motivó el desarrollo y presentación de métodos basados en grafos,
+  los cuales buscan proveer una mejor herramienta para probar
+  independencia entre las variables en situaciones de HDLSSD.
 \item
   En la construcción del test, se requiere algún tipo de asociación
-  entre las x-distancias y las y-distancias, sin embargo, estas
-  relaciones se pueden reflejar sólo en sus vecinos más cercanos;
-  teniendo en cuenta esto, se propone un test multiescala.
+  entre las x-distancias y las y-distancias, entonces estas relaciones
+  se pueden reflejar en sus vecinos más cercanos y el enfoque es llevado
+  a buscar proximidades y coincidencias.
 \item
-  Si bien, para la implementación de los distintos test se utilizó la
+  Aunque, para la implementación de los distintos test se utilizó la
   distancia Euclidiana, es posible emplear otro concepto de distancia.
 \end{itemize}
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2017.11.17)  21 NOV 2017 15:58
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2017.11.17)  27 NOV 2017 11:49
 entering extended mode
 **./Tests.tex
 (Tests.tex
@@ -782,44 +782,74 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip54
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count280
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: xetex.def on input line 147.
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\xetex.def"
+File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
+))
+("C:\Users\Hernan David Torres\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyvrb\fa
+ncyvrb.sty"
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count281
+\FV@InFile=\read2
+\FV@TabBox=\box45
+\c@FancyVerbLine=\count282
+\FV@StepNumber=\count283
+\FV@OutFile=\write3
+)
+("C:\Users\Hernan David Torres\AppData\Roaming\MiKTeX\2.9\tex\latex\framed\fram
+ed.sty"
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip55
+\fb@frw=\dimen159
+\fb@frh=\dimen160
+\FrameRule=\dimen161
+\FrameSep=\dimen162
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\longtable.sty"
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip55
-\LTright=\skip56
-\LTpre=\skip57
-\LTpost=\skip58
-\LTchunksize=\count281
-\LTcapwidth=\dimen159
-\LT@head=\box45
-\LT@firsthead=\box46
-\LT@foot=\box47
-\LT@lastfoot=\box48
-\LT@cols=\count282
-\LT@rows=\count283
-\c@LT@tables=\count284
-\c@LT@chunks=\count285
+\LTleft=\skip56
+\LTright=\skip57
+\LTpre=\skip58
+\LTpost=\skip59
+\LTchunksize=\count284
+\LTcapwidth=\dimen163
+\LT@head=\box46
+\LT@firsthead=\box47
+\LT@foot=\box48
+\LT@lastfoot=\box49
+\LT@cols=\count285
+\LT@rows=\count286
+\c@LT@tables=\count287
+\c@LT@chunks=\count288
 \LT@p@ftn=\toks24
 )
 ("C:\Users\Hernan David Torres\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\bo
 oktabs.sty"
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen160
-\lightrulewidth=\dimen161
-\cmidrulewidth=\dimen162
-\belowrulesep=\dimen163
-\belowbottomsep=\dimen164
-\aboverulesep=\dimen165
-\abovetopsep=\dimen166
-\cmidrulesep=\dimen167
-\cmidrulekern=\dimen168
-\defaultaddspace=\dimen169
-\@cmidla=\count286
-\@cmidlb=\count287
-\@aboverulesep=\dimen170
-\@belowrulesep=\dimen171
-\@thisruleclass=\count288
-\@lastruleclass=\count289
-\@thisrulewidth=\dimen172
+\heavyrulewidth=\dimen164
+\lightrulewidth=\dimen165
+\cmidrulewidth=\dimen166
+\belowrulesep=\dimen167
+\belowbottomsep=\dimen168
+\aboverulesep=\dimen169
+\abovetopsep=\dimen170
+\cmidrulesep=\dimen171
+\cmidrulekern=\dimen172
+\defaultaddspace=\dimen173
+\@cmidla=\count289
+\@cmidlb=\count290
+\@aboverulesep=\dimen174
+\@belowrulesep=\dimen175
+\@thisruleclass=\count291
+\@lastruleclass=\count292
+\@thisrulewidth=\dimen176
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
@@ -830,11 +860,9 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 99.
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\xetex.def"
-File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
-))
-\Gin@req@height=\dimen173
-\Gin@req@width=\dimen174
+)
+\Gin@req@height=\dimen177
+\Gin@req@width=\dimen178
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grffile.sty"
 Package: grffile 2016/05/16 v1.17 Extended file name support for graphics (HO)
 
@@ -855,9 +883,9 @@ Package: parskip 2001/04/09 non-zero parskip adjustments
 ("C:\Users\Hernan David Torres\AppData\Roaming\MiKTeX\2.9\tex\latex\titling\tit
 ling.sty"
 Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip59
-\thanksmargin=\skip60
-\droptitle=\skip61
+\thanksmarkwidth=\skip60
+\thanksmargin=\skip61
+\droptitle=\skip62
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
 Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks25
@@ -865,9 +893,9 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headfont=\toks27
 \thm@notefont=\toks28
 \thm@headpunct=\toks29
-\thm@preskip=\skip62
-\thm@postskip=\skip63
-\thm@headsep=\skip64
+\thm@preskip=\skip63
+\thm@postskip=\skip64
+\thm@headsep=\skip65
 \dth@everypar=\toks30
 )
 
@@ -877,13 +905,13 @@ See the mathspec package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.94 \usepackage{amsmath}
-                          
+l.133 \usepackage{amsmath}
+                           
 Here is how much of TeX's memory you used:
- 21658 strings out of 427839
- 396802 string characters out of 3152537
- 521629 words of memory out of 3000000
- 25519 multiletter control sequences out of 15000+200000
+ 22153 strings out of 427839
+ 404079 string characters out of 3152537
+ 532251 words of memory out of 3000000
+ 26004 multiletter control sequences out of 15000+200000
  530656 words of font info for 26 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  45i,0n,68p,10448b,269s stack positions out of 5000i,500n,10000p,200000b,50000s

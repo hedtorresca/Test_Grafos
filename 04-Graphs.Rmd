@@ -1,29 +1,4 @@
-# TEST BASADO EN GRAFOS
-
-
-* **_Grafo simple:_** Conjunto de _nodos_ unidos por enlaces llamados _aristas_.
-
-* **_Grafo completo_**:  Grafo simple donde _cada par de vértices_ está conectado por una _arista_. Tiene $n(n-1)/2$ aristas. Grafo regular de grado $n-1$
-
-* **_Grafo de arcos ponderados_**:  Grafo con asignaciones de pesos en cada arco.
-
-```{r echo=FALSE, fig.align="center", out.height=240, out.width=260,  fig.cap= "Grafo completo ponderado"}
-
-knitr::include_graphics("grafo_completo.png")
-```
-
-## Conceptos en teoría de grafos
-
-* **_Subgrafo:_** Cuyo conjunto de vértices(como el de aristas) es un subconjunto del de grafo original.
-* **_Camino:_** Secuencia de vértices dentro de un grafo tal que exista una arista entre cada vértice y el siguiente.
-* **_Árbol:_** Donde cualesquiera dos vértices están conectados por exactamente _un camino_.
-
-```{r echo=FALSE, fig.align="center", out.height=240, out.width=260,  fig.cap= "Árbol"}
-
-knitr::include_graphics("Tree_graph.svg")
-```
-
-## Precisiones del test
+# PRECISIONES DEL TEST
 
 
 Se consideran dos grafos completos de arcos ponderados $\mathcal{G}_{\mathbf{x}}$ y $\mathcal{G}_{\mathbf{y}}$ con nodos $\mathbf{x_1,...,x_n}$  y $\mathbf{y_1,..., y_n}$, respectivamente, donde $d_{i,j}^{\mathbf{x}}$ (y, correspondientemente, $d_{i,j}^{\mathbf{y}}$) es la ponderación asociada con el lado que conecta a $\mathbf{x}_i$ y $\mathbf{x}_j$ (y, paralelamente, con $\mathbf{y}_i$ y $\mathbf{y}_j$) [@friedman1983graph]
@@ -35,7 +10,7 @@ El gráfico K-NN en  $\mathcal{G}_{\mathbf{x}}$ tiene un arco entre $x_i$ y $x_j
 knitr::include_graphics("1-nn.png")
 ```
 
-##Grafo 5-NN
+## Ejemplo: Grafo 5-NN
 
 ```{r fig.align='center', fig.cap="5-NN en 50 obs. Normal bivariada", out.width=450, out.height=320, echo=FALSE}
 knitr::include_graphics("5-nn.png")
@@ -48,7 +23,7 @@ Es un subgrafo que tiene que ser un árbol y contener todos los vértices del gr
 knitr::include_graphics("1-MST.png")
 ```
 
-## Grafo 5-MST
+## Ejemplo: Grafo 5-MST
 El r-MST, $r={1, 2,...,K}$, es un árbol recubridor mínimo que no comparte arco alguno con ninguno  de los r-1 anteriores.
 
 ```{r fig.align='center', fig.cap="5-MST en 50 obs. Normal bivariada", out.width=450, out.height=320, echo=FALSE}
@@ -80,15 +55,15 @@ El estadístico correspondiente es:
  
 ## Test estadístico libre de distribución basado en grafos
 
-Pequeñas distancias en $\mathcal{x}$ corresponden a pequeñas distancias en $\mathcal{y}$
+> Pequeñas distancias en $\mathcal{x}$ corresponden a pequeñas distancias en $\mathcal{y}$
 
-Seleccionamos un recorrido aleatorio del árbol, donde en cada paso comenzamos en un nodo ya visitado,$i \in V= {1,2,...,n}$, y avanzamos hacia un nuevo nodo,$j \in V^c$,. Por lo tanto, el árbol se recorre en $n-1$ pasos. Se calcula el rango R_i en cada $d_{i,j}^{\mathbf{y}}$ y se obtienen $n-2$ rangos.
+Seleccionamos un recorrido aleatorio del árbol, donde en cada paso comenzamos en un nodo ya visitado,$i \in V= {1,2,...,n}$, y avanzamos hacia un nuevo nodo,$j \in V^c$,. Por lo tanto, el árbol se recorre en $n-1$ pasos. Se calcula el rango $R_i$ en cada $d_{i,j}^{\mathbf{y}}$ y se obtienen $n-2$ rangos.
 
 Y se usa el siguiente estadístico
 
 $$T_{RT} =  -2 \displaystyle \sum_{i=1}^{n-2} log(\dfrac{R_j}{n-i})$$
 
-## Ejemplo
+## Ejemplo de juguete
 ```{r fig.align='center', fig.cap="Ejemplo de juguete", out.width= 500, out.height=450, echo=FALSE}
 knitr::include_graphics("test6.png")
 ```
@@ -100,12 +75,18 @@ Permite encontrar un árbol recubridor mínimo de un grafo no dirigido y complet
 2. Aumentar el árbol por un lado: De las posibles uniones que pueden conectar el árbol a los vértices que no están aún en el árbol, encontrar el lado de menor distancia y unirlo al árbol.
 3. Repetir el paso 2 (hasta que todos los vértices pertenezcan al árbol) [@heller2012consistent]
 
+## Ejemplo
+
+```{r fig.align='center', fig.cap="Ejemplo de juguete", out.width= 400, out.height=320, echo=FALSE}
+knitr::include_graphics("Minimum_spanning_tree.svg")
+```
+
 ## Test modificado libre de distribución
 
 
-A causa de la selección aleatoria del recorrido, el anterior test puede determinar inferencias engañosas. Para eso se usa un recorrido sistemático siguiendo el algoritmo de Prim. [@heller2012consistent]
+A causa de la selección aleatoria del recorrido, el anterior test puede determinar inferencias engañosas. Para eso se usa un recorrido sistemático siguiendo el _algoritmo de Prim_. [@heller2012consistent]
 
-Y se usa el estadístico T_{RT} de la misma notación; en vez de $R_i$, se usa $R_o$ para distiguir la selección sitematizada de la aleatoria.
+Y se usa el estadístico $T_{RT}$ de la misma notación; en vez de $R_i$, se usa $R_o$ para distiguir la selección sitematizada de la aleatoria.
 
 $$T^{o} = -2 \displaystyle \sum_{i=1}^{n-2} log \left( \dfrac{R_i^o}{n-i}\right)$$
 
@@ -118,166 +99,6 @@ Así
 $$ T^{r} = -2 \displaystyle \sum_{i=1}^{n-2} log \left( \dfrac{R_i ^r}{n-i}\right)$$
 
 
-# TEST BASADO EN CORRELACIÓN DE DISTANCIA
-
-Para todas las distribuciones con primeros momentos finitos, la correlación de distancias $\mathcal{R}$ generaliza la idea de correlación de dos maneras fundamentales [@szekely2007measuring]:
- 
- *  $\mathcal{R} \mathbf{(X, Y)}$ se define para $\mathbf{X}$ y $\mathbf{Y}$ en dimensiones arbitrarias;
- *  $\mathcal{R} \mathbf{(X, Y)}$ = 0 caracteriza la independencia de $\mathbf{X}$ y $\mathbf{Y}$
-
-Para probar $H_0: f_{x,y}= f_xf_y$ vs. $H_A: f_{x,y}\neq f_xf_y$
-
-## Precisiones del test
-
-Para cada par $(i,j)$ con $(i \leq i \neq j  \leq n)$  se define:
-
-$$A_{i,j} = d_{i,j}^x - d_{i,0}^x - d_{0,j}^x + d_{0,0}^x$$
-
-Con:  
-
-$$d_{i,0}^x =  n^{-1} \sum_{j=1}^n d_{i,j}^x$$ 
-
-$$d_{0,j}^x = n^{-1} \sum_{i=1}^n d_{i,j}^x$$
-
-$$d_{0,0}^x = n^{-1} \sum_{i=1}^n d_{i,0}^x =  n^{-1} \displaystyle\sum_{j=1}^n d_{0,j}^x $$
-
-
-De la misma forma se definen los $B_{i,j}$  basados en las distancias de $Y$.
-
-## Estadístico
-El estadístico se define como:
-
-
-$$T_{dCov}=\dfrac{ \displaystyle \left[ \sum_{i=1}^n \sum_{j=1}^n A_{i,j}B_{i,j} \right]}{ \displaystyle  \left[  \sum_{i=1}^n \sum_{j=1}^n  A_{i,j}^2  \sum_{i=1}^n \sum_{j=1}^n B_{i,j}^2 \right]^{1/2}}  $$
-
-Y es consistente para muestras grandes, pero no es eficaz cuando $d_{i,j}^\mathbf{x}$ y $d_{i,j}^\mathbf{y}$  son correlacionadas negativamente.
-
-
-# TEST BASADO EN DISTANCIAS $L_1$ Y KULLBACK- LEIBLER
- 
-Se consideran dos enfoques definidos cuando la distribución empírica de las variables es restringida a particiones finitas. Estos test resultan ser fuertemente consistentes.
-
-## Estadístico basado en $L_1$
-
-Se denota $v_n^{\mathbf{Z}}$ la distribución de $(x,y)$; $\mu_n^{\mathbf{X}}$ y $\mu_n^{\mathbf{Y}}$ distribuciones de $x$ y $y$.
-
-Sean $P_n ={A_{n,1}, ... , A_{n,m_n}}$ y $Q_n ={B_{n,1}, ... , B_{n,m'_n}}$ particiones disyuntas de $X$ y $Y$.
-
-Toda vez que $A$ y $B$ son subconjuntos de Borel, tenemos
-$$\nu_n(A \times B) = n^-1 \# \{i: (X_i, Y_i) \in A \times B, i = 1,...,n\}$$
-$$\mu_n^{\mathbf{X}}(A) = n^-1 \# \{i: X_i \in A , i = 1,...,n\}$$
-$$\mu_n^{\mathbf{Y}}(B) = n^-1 \# \{i: Y_i \in  B, i = 1,...,n\}$$
-
-Se define el estadístico $L_1$ como
-
-$$\displaystyle \sum _{A\in P_n} \sum_{B \in Q_n} |\mu_n^{\mathbf{X}} (A \times B) - \mu_n^{\mathbf{X}}(A)\mu_n^{\mathbf{Y}}(B)|$$
-
-y el estadístico **Kullback- Leibler o log-verosimilitud**
-
-$$ \displaystyle \sum_{A\in P_n} \sum_{B\in Q_n} \mu_n^z(A \times B) log \left[ \dfrac{\mu_n^z(A \times B)}{{\mu_n^x(A) \mu_n^y(B)}}\right]$$
-
-Rechaza $H_0 : v= \mu_n^x \times \mu_n^Y$ para valores grandes del estadístico.
-
-# TEST BASADO EN KERNEL REPRODUCTOR
-
-**Espacio de Hilbert con núcleo (Kernel) reproductor:** Es un espacio de Hilbert de funciones para las cuales todas las aplicaciones son operadores lineales.
-
-## Precisiones del test
-
-Se propone un test basado en el hecho de que $\mathbf{X}$ y $\mathbf{Y}$ son independientes si y solo si $f(\mathbf{X})$ y $g(\mathbf{Y})$ son incorrelacionadas para todo $f$ \in \mathcal{H_X} $ y $g$ \in \mathcal{H_Y}$ donde $ \mathcal{H_X}$ y  $\mathcal{H_Y}$ son espacios del núcleo reproductor
-
-El estadístico está definido como:
-
-$$T_{GG}= n^{-2} \left( \displaystyle \sum_{i=1}^n \sum_{j=1}^n  \alpha_{i,j} \beta_{i,j} \right) - 2n^{-3} \displaystyle \sum_{i=1}^n \left(  \sum_{j=1}^n \alpha_{i,j}  \right) \left(  \sum_{j=1}^n \beta_{i,j}  \right) +  n^{-4}\left(      
- \displaystyle   \sum_{i=1}^n \sum_{j=1}^n \alpha_{i,j} \right)  \left(     \sum_{i=1}^n  \sum_{j=1} ^n \beta_{i,j}  \right) $$
- 
- 
- Con 
- 
- $$\alpha_{i,j} = k^{ \mathcal{\mathbf{x}}} (\mathcal{\mathbf{x}}_i, \mathcal{\mathbf{x}}_j)$$ 
-
- $$\beta_{i,j} = k^{ \mathcal{\mathbf{y}}} (\mathcal{\mathbf{y}}_i, \mathcal{\mathbf{y}}_j)$$   
- 
- Para $k^{ \mathcal{\mathbf{x}}}$ y  $k^{ \mathcal{\mathbf{y}}}$ las núcleos reproductores asociados a $\mathcal{H_X}$ y  $\mathcal{H_Y}$
- 
-
-# TEST BASADO EN ASOCIACIÓN DE RANGOS DISTANCIAS
-
-Se propone un test basado en el estadístico $\chi^2$ de Pearson calculado en una tabla de contingencia basada en distancia por pares, donde se asigna cada $\mathbf{z_k}$ ($k \neq i, j$) a una celda según coresponda.
-
-  ```{r fig.align='center', fig.cap="Tabla de contingencia para la clasificación cruzada", out.width=450, out.height=220, echo=FALSE}
-knitr::include_graphics("test5.png")
-```
-
-Y así se define el test estadístico:
- 
- $$ T_{HHG} = \displaystyle  \sum_{i=1}^n  \sum_{j (\neq i) =1}^n S_{ij} $$
- 
-
-
-# TEST PROPUESTO POR EL AUTOR
-
-
-* Para cada $z_i = \binom {x_i}{y_i}$  se organizan los otros  $z_js$  $(j\neq i)$ según sus x- distancias de $Z_i$. para $k= 1,2, ... , n-1$.
-
-* Sea $z_{ik}$ el k-ésimo vecino más cercano de $z_i$ $$ (d_{i, i_1}^x  \leq d_{i, i_2}^x \leq ...  \leq d_{i, i_{n-1}}^x  )$$ .
-
-
-* Sea $R_{i,1}$ el rango de $d_{i,i_1}^y$  
-la y-distancia correspondiente a vecino mas cercano x de $z_i$  en el conjunto de 
-$$ (d_{i, i_1}^y  ,  d_{i, i_2}^y ,...  , d_{i, i_{n-1}}^y  )$$  
-
-* Para $k= 2, ..., n-2$, $R_{i,k}$ es definido como el rango de $d_{i,i_k}^y$ , la y-distancia correspondiente al k-ésimo  x-vecino  más cercano de $Z_i$, en el conjunto  ${d_{i,i_k}^y, ... , d_{i, i_{n-1}}^y}$ que contiene $n-k$ de las y-distancias.
-
-* Se repite el procedimiento para todos los valores de $i = 1, 2,..., n$
-
-## Rangos retrospectivos
-
-* Se define rangos retrospectivos como: $R_{i,k}^r = n-k+1 - R_{i,k}$ para $i=1,2,...,n$
-y $k = 1,2, ... , n-2$. 
-
-* Para alguna función monótona adeduada $\varphi$ en $[0,1]$,
-
- $T_1=-2\displaystyle \sum_{i=1 ^n}  \sum_{k=1}^{n-2} \varphi \left(   \dfrac{R_{i,k}}{n-k}\right), $ 
-y 
-  $T_2= -2 \displaystyle  \sum_{i=1}^n \sum_{k=1}^{n-2} \left(  \dfrac{R_{i,k} ^r}{n-k} \right)$
- 
-Miden asociaciones positivas y negativas.
-
-* Se usa $\varphi(t) = log(t)$
-
-* Finalmente,  $T= max(T_1 ,T_2) $ es el estadístico usado.
-
-$H_0$ se rechaza para valores grandes de T.
-
-## Permutaciones
-Para algún $i$ fijo, los $R_{i,j}$'s son independientes bajo $H_0$.
-$R_{i,k}$ sigue una distribución uniforme 
-
-Para $i\neq j$ la distribución conjunta de $R_{i,k}$  y $R_{j,k}$
-con $k, k=1,2, ... , n-2$  puede depender de la distribución subyacente de $Z$.
-
-Considerando una permutación aleatoria $\phi$ de $\{ 1, 2, ... , n \}$ y usando : 
-
-$Z_1 ^ * = \binom {x_1}{ y_{\phi (1)}}$
-
-$Z_2 ^* = \binom {x_2}{ y_{\phi (2)}}$
-
-.
-.
-.
-$Z_n ^* = \binom {x_n}{ y_{\phi (n)}}$ 
-
-El estadístico es calculado usando estas mismas observaciones
-
-## Corregir asimetría del test
-
-$T_{x,y}$ : Rangos de y-distancias de los x-vecinos más cercanos
-
-$T_{y,x}$ : Rangos de x-distancias de los y-vecinos más cercanos
-
-$$T_sum = T_{x,y} + T_{y,x}$$
-$$T_{max} = max (T_{x,y}, T_{y,x})$$
 
 # EJEMPLO CON DATOS REALES
 
@@ -290,10 +111,10 @@ knitr::include_graphics("invento.png")
 # CONCLUSIONES
  
  
-* Si bien los test estadísticos presentados son convenientes en el caso en el que el número de variables supera el de individuos, aún presentan ciertas limitaciones; lo cual motivó al autor al desarrollo y presentación de  un nuevo método, el cual busca proveer una mejor herramienta para probar independencia entre  las variables.
+* Si bien los test estadísticos presentados al principio se usan para probar la independencia, en el caso en el que el número de variables supera el de individuos presentan limitaciones o no aplicabilidad; lo cual motivó el desarrollo y presentación de métodos basados en grafos, los cuales buscan proveer una mejor herramienta para probar independencia entre  las variables en situaciones de HDLSSD.
 
-* En la construcción del test, se requiere algún tipo de asociación entre las x-distancias y las y-distancias, sin embargo, estas relaciones se  pueden reflejar sólo en sus vecinos más cercanos; teniendo en cuenta esto, se propone un test multiescala.
+* En la construcción del test, se requiere algún tipo de asociación entre las x-distancias y las y-distancias, entonces estas relaciones se  pueden reflejar en sus vecinos más cercanos y el enfoque es llevado a buscar proximidades y coincidencias.
 
-* Si bien, para la implementación de los distintos test se utilizó la distancia Euclidiana, es posible emplear otro concepto de distancia.
+* Aunque, para la implementación de los distintos test se utilizó la distancia Euclidiana, es posible emplear otro concepto de distancia.
 
  
