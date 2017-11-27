@@ -3,34 +3,34 @@
 
 Se consideran dos grafos completos de arcos ponderados $\mathcal{G}_{\mathbf{x}}$ y $\mathcal{G}_{\mathbf{y}}$ con nodos $\mathbf{x_1,...,x_n}$  y $\mathbf{y_1,..., y_n}$, respectivamente, donde $d_{i,j}^{\mathbf{x}}$ (y, correspondientemente, $d_{i,j}^{\mathbf{y}}$) es la ponderación asociada con el lado que conecta a $\mathbf{x}_i$ y $\mathbf{x}_j$ (y, paralelamente, con $\mathbf{y}_i$ y $\mathbf{y}_j$) [@friedman1983graph]
 
-## Grafo K vecinos más próximos 
+# Grafo K vecinos más próximos 
 El gráfico K-NN en  $\mathcal{G}_{\mathbf{x}}$ tiene un arco entre $x_i$ y $x_j$, si $x_i$ es uno de los primeros K vecinos de $x_j$ o viceversa; y, análogamente, para $\mathcal{G}_{\mathbf{x}}$.
 
 ```{r fig.align='center', fig.cap="1-NN 50 obs. Normal bivariada", out.width=450, out.height=320, echo=FALSE}
 knitr::include_graphics("1-nn.png")
 ```
 
-## Ejemplo: Grafo 5-NN
+# Ejemplo: Grafo 5-NN
 
 ```{r fig.align='center', fig.cap="5-NN en 50 obs. Normal bivariada", out.width=450, out.height=320, echo=FALSE}
 knitr::include_graphics("5-nn.png")
 ```
 
-##  El árbol recubridor mínimo (MST)
+#  El árbol recubridor mínimo (MST)
 Es un subgrafo que tiene que ser un árbol y contener todos los vértices del grafo inicial y, a la vez, será el de la menor suma de los pesos.
 
 ```{r fig.align='center', fig.cap="1-MST en 50 obs. Normal bivariada", out.width=450, out.height=320, echo=FALSE}
 knitr::include_graphics("1-MST.png")
 ```
 
-## Ejemplo: Grafo 5-MST
+# Ejemplo: Grafo 5-MST
 El r-MST, $r={1, 2,...,K}$, es un árbol recubridor mínimo que no comparte arco alguno con ninguno  de los r-1 anteriores.
 
 ```{r fig.align='center', fig.cap="5-MST en 50 obs. Normal bivariada", out.width=450, out.height=320, echo=FALSE}
 knitr::include_graphics("5-MST.png")
 ```
 
-## Test estadístico
+# Test estadístico
 
 
 Sea $\tau_x^k$ y $\tau_y^k$ el K-MST o el K-NN sobre el grafo completo $\mathcal{G}_{\mathbf{x}}$ y $\mathcal{G}_{\mathbf{x}}$, respectivamente.
@@ -53,7 +53,7 @@ El estadístico correspondiente es:
  
  
  
-## Test estadístico libre de distribución basado en grafos
+# Test estadístico libre de distribución basado en grafos
 
 > Pequeñas distancias en $\mathcal{x}$ corresponden a pequeñas distancias en $\mathcal{y}$
 
@@ -63,25 +63,25 @@ Y se usa el siguiente estadístico
 
 $$T_{RT} =  -2 \displaystyle \sum_{i=1}^{n-2} log(\dfrac{R_j}{n-i})$$
 
-## Ejemplo de juguete
+# Ejemplo de juguete
 ```{r fig.align='center', fig.cap="Ejemplo de juguete", out.width= 500, out.height=450, echo=FALSE}
 knitr::include_graphics("test6.png")
 ```
 
 
-## Algoritmo de Prim
+# Algoritmo de Prim
 Permite encontrar un árbol recubridor mínimo de un grafo no dirigido y completo.
 1. Se selecciona el arco con menor peso.
 2. Aumentar el árbol por un lado: De las posibles uniones que pueden conectar el árbol a los vértices que no están aún en el árbol, encontrar el lado de menor distancia y unirlo al árbol.
 3. Repetir el paso 2 (hasta que todos los vértices pertenezcan al árbol) [@heller2012consistent]
 
-## Ejemplo
+# Ejemplo
 
 ```{r fig.align='center', fig.cap="Ejemplo de juguete", out.width= 400, out.height=320, echo=FALSE}
 knitr::include_graphics("Minimum_spanning_tree.svg")
 ```
 
-## Test modificado libre de distribución
+# Test modificado libre de distribución
 
 
 A causa de la selección aleatoria del recorrido, el anterior test puede determinar inferencias engañosas. Para eso se usa un recorrido sistemático siguiendo el _algoritmo de Prim_. [@heller2012consistent]

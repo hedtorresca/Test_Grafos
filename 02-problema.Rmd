@@ -3,7 +3,7 @@
 
 Se han desarrollado muchos test estadísticos —tanto paramétricos como no paramétricos — para probar la independencia entre 2 vectores aleatorios, pero dichos test no son aplicables en casos de alta dimensionalidad y de muestras pequeñas.
 
-## Desarrollo teórico
+# Desarrollo teórico
 
 En las situaciones tratadas se consideran *_n_* realizaciones independientes, 
 
@@ -32,7 +32,7 @@ donde  $\mathbf{X}$ $\in$ $\mathcal{X}$ $\subseteq$ $\mathbb{R}^p$  y  $Y$ $\in$
 
 
   
-## Test existentes
+# Test existentes
 |          *Test paramétricos*          	  |               | *Test no paramétricos*                                                                 	|
 |:-----------------------------------:	  |:-------------:|--------------------------------------------------------------------------------------	|
 |  Basado en el estadístico Wilk       	  |  *_Univariados_*  |  Estadístico de Spearman $\rho$ y Estadístico de Kendall $\tau$                       	|
@@ -43,7 +43,7 @@ donde  $\mathbf{X}$ $\in$ $\mathcal{X}$ $\subseteq$ $\mathbb{R}^p$  y  $Y$ $\in$
 
 Table: Parangón de los test propuestos hasta el momento.
 
-## Test aplicables a HDLSS
+# Test aplicables a HDLSS
 
 Para manipular datos HDLSS en distintas áreas de investigación, se han desarrollado algunos test de independencia entre dos vectores, basados en grafos y enfocados en distancias _inter-point_; sea $d_{x}$ y $d_{y}$ medidas de distancia en $\mathcal{X}$ y $\mathcal{Y}$, respectivamente; y, para toda $(i,j)$, definimos 
 $$ d_{ij}^x = d_x(x_i, x_j), \\ d_{ij}^y = d_y(y_i, y_j). $$

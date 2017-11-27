@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="desarrollo-teorico.html">
-<link rel="next" href="test-aplicables-a-hdlss.html">
+<link rel="prev" href="ejemplo-de-juguete.html">
+<link rel="next" href="ejemplo.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -147,58 +147,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="test-existentes" class="section level1">
-<h1><span class="header-section-number"> 5</span> Test existentes</h1>
-<table>
-<caption>Parangón de los test propuestos hasta el momento.</caption>
-<colgroup>
-<col width="26%" />
-<col width="11%" />
-<col width="61%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"><em>Test paramétricos</em></th>
-<th align="center"></th>
-<th><em>Test no paramétricos</em></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Basado en el estadístico Wilk</td>
-<td align="center"><em><em>Univariados</em></em></td>
-<td>Estadístico de Spearman <span class="math inline">\(\rho\)</span> y Estadístico de Kendall <span class="math inline">\(\tau\)</span></td>
-</tr>
-<tr class="even">
-<td align="center">Prueba de la raíz más grande de Roy</td>
-<td align="center"></td>
-<td>Test basado en cuadrantes estadísticos</td>
-</tr>
-<tr class="odd">
-<td align="center">Traza de Hotelling-Lawley</td>
-<td align="center"><em><em>Multivariados</em></em></td>
-<td>Extensión del test de cuadrantes para mayores dimensiones mediantes interdirecciones</td>
-</tr>
-<tr class="even">
-<td align="center">Traza de Pillai-Bartlett</td>
-<td align="center"></td>
-<td>Generalizaciones multivariadas de los test basados en Spearman y Kendall.</td>
-</tr>
-<tr class="odd">
-<td align="center"></td>
-<td align="center"></td>
-<td>Generalizaciones del cuadrante estadístico usando signos espaciales y rangos</td>
-</tr>
-</tbody>
-</table>
+<div id="algoritmo-de-prim" class="section level1">
+<h1><span class="header-section-number"> 20</span> Algoritmo de Prim</h1>
+<p>Permite encontrar un árbol recubridor mínimo de un grafo no dirigido y completo. 1. Se selecciona el arco con menor peso. 2. Aumentar el árbol por un lado: De las posibles uniones que pueden conectar el árbol a los vértices que no están aún en el árbol, encontrar el lado de menor distancia y unirlo al árbol. 3. Repetir el paso 2 (hasta que todos los vértices pertenezcan al árbol) <span class="citation">(R. Heller, Heller, &amp; Gorfine, <a href="#ref-heller2012consistent">2012</a>)</span></p>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-heller2012consistent">
+<p>Heller, R., Heller, Y., &amp; Gorfine, M. (2012). A consistent multivariate test of association based on ranks of distances. <em>Biometrika</em>, <em>100</em>(2), 503–510.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="desarrollo-teorico.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="test-aplicables-a-hdlss.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ejemplo-de-juguete.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ejemplo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -227,7 +192,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/hedtorresca/Tests_de_Independencia/edit/master/02-problema.Rmd",
+"link": "https://github.com/hedtorresca/Tests_de_Independencia/edit/master/04-Graphs.Rmd",
 "text": "Edit"
 },
 "download": null,

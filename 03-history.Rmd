@@ -3,7 +3,7 @@
  * Un grafo $\displaystyle G=(V,E)$ es una pareja ordenada en la que $\mathbf{V}$ es un conjunto no vacío de **vértices** y $\mathbf{E}$ es un conjunto de **aristas**.
      + $\mathbf{V}$ consta de pares no ordenados de vértices, tales como ${x,y} \in E $, entonces decimos que $x$ e  $y$ son adyacentes.
 
-## Un poco de historia
+# Un poco de historia
 
 * Siglo XVIII: Problema de los puentes de _Königsberg_: Encontrar un camino que recorriera los siete puentes del río Pregel,de modo que se recorrieran todos los puentes pasando una sola vez por cada uno de ellos. 
 
@@ -14,7 +14,7 @@
 knitr::include_graphics("Konigsberg_bridges.png")
 ```
 
-## Composición y conceptos
+# Composición y conceptos
 
 
 * **_Grafo simple o grafo:_** Conjunto de _nodos_ unidos por enlaces llamados _aristas_.
@@ -29,7 +29,7 @@ knitr::include_graphics("Konigsberg_bridges.png")
 knitr::include_graphics("grafo_completo.png")
 ```
 
-## Tipos de grafos
+# Tipos de grafos
 
 * **_Subgrafo:_** Cuyo conjunto de vértices(como el de aristas) es un subconjunto del de grafo original.
 
@@ -42,7 +42,7 @@ knitr::include_graphics("grafo_completo.png")
 knitr::include_graphics("Tree_graph.svg")
 ```
 
-##Ejemplo básico en R
+#Ejemplo básico en R
 ```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(igraph)
 g <- graph.formula(1-2, 1-3 ,1-4, 1-5 , 1-6 ,1-7, 2-6, 2-7, 3-5, 4-5 ,4-6, 4-7, 5-6, 5-7, 6-7)
