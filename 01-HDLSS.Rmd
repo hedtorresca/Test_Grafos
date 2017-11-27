@@ -1,0 +1,3 @@
+# ¿QUÉ ES HDLSSD? {#intro}
+
+Previo a lo anterior, es importante mencionar que *_High Dimensional Low Sample Size Data_* *_HDLSSD_* refiere, como su nombre lo indica,  a las situaciones en las cuales se tiene alta dimensionalidad (gran cantidad de variables) y tamaños muestrales pequeños.
